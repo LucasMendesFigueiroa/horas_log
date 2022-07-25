@@ -1,19 +1,29 @@
 <template>
   <v-row align="center" justify="center">
     <v-col cols="12">
-      <calen></calen>
-    </v-col>
-    <v-col cols="12">
-      <formlog> </formlog>
+      <v-hover v-slot="{ hover }" disabled>
+        <v-card
+          :elevation="hover ? 12 : 2"
+          class="mx-auto"
+          height="500"
+          max-width="700"
+        >
+          <v-card-text class="my-4 text-center text-h6">
+            <h2>Log de Hora</h2>
+          </v-card-text>
+          <dialog></dialog>
+          <formlog> </formlog>
+        </v-card>
+      </v-hover>
     </v-col>
   </v-row>
 </template>
 
 <script lang="ts">
-import calendarioVue from "@/components/calendario.vue";
 import Vue from "vue";
 import FormLogHoras from "../components/FormLogHoras.vue";
 //import HoraLogadaVue from "@/components/HoraLogada.vue";
+import DialogLogHoraVue from "@/components/DialogLogHora.vue";
 
 export default Vue.extend({
   name: "Home",
@@ -21,7 +31,7 @@ export default Vue.extend({
   components: {
     formlog: FormLogHoras,
     //horalog: HoraLogadaVue,
-    calen: calendarioVue,
+    dialog: DialogLogHoraVue,
   },
 
   data() {

@@ -1,19 +1,19 @@
 <template>
   <v-row align="center" justify="center">
     <v-col cols="12">
-      <calen></calen>
+      <painel :titulo="teste">
+        <formlog></formlog>
+      </painel>
     </v-col>
-    <v-col cols="12">
-      <formlog> </formlog>
-    </v-col>
+    <v-col cols="12"> </v-col>
   </v-row>
 </template>
 
 <script lang="ts">
-import calendarioVue from "@/components/calendario.vue";
+//import calendarioVue from "@/components/calendario.vue";
 import Vue from "vue";
 import FormLogHoras from "../components/FormLogHoras.vue";
-//import HoraLogadaVue from "@/components/HoraLogada.vue";
+import Painel from "@/components/Painel.vue";
 
 export default Vue.extend({
   name: "Home",
@@ -21,11 +21,14 @@ export default Vue.extend({
   components: {
     formlog: FormLogHoras,
     //horalog: HoraLogadaVue,
-    calen: calendarioVue,
+    //calen: calendarioVue,
+    painel: Painel,
   },
 
   data() {
-    return {};
+    return {
+      teste: "teste",
+    };
   },
   mounted() {
     this.$refs.calendar.scrollToTime("08:00");

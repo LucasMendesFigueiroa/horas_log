@@ -1,17 +1,21 @@
 <template>
   <form>
-    <input
-      type="search"
-      @input="titulo"
-      placeholder="Digite o titulo da sua Task"
-    />
-    <input type="search" @input="nome" placeholder="Digite seu nome" />
-    <input
-      type="search"
-      @input="tempo"
-      placeholder="digite o tempo gasto em min"
-    />
-    <input type="search" @input="descricao" placeholder="Descrição" />
+    <div class="formulario">
+      <label for="titulo">Digite o titulo da sua Task</label>
+      <input type="search" @input="titulo" />
+    </div>
+    <div class="formulario">
+      <label for="nome">Digite seu nome</label>
+      <input type="search" @input="nome" />
+    </div>
+    <div class="formulario">
+      <label for="tempo">Digite o tempo gasto em min</label>
+      <input type="search" @input="tempo" />
+    </div>
+    <div class="formulario">
+      <label for="descricao">Descrição</label>
+      <textarea type="search" @input="descricao"> </textarea>
+    </div>
   </form>
 </template>
 <script lang="ts">
@@ -41,4 +45,10 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.formulario {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+</style>

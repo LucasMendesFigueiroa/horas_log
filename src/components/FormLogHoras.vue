@@ -1,54 +1,71 @@
 <template>
-  <form>
+  <form @submit.prevent="">
     <div class="formulario">
-      <label for="titulo">Digite o titulo da sua Task</label>
-      <input type="search" @input="titulo" />
+      <label>Digite o titulo da sua Task</label>
+      <input v-model="titulo" type="text" />
     </div>
     <div class="formulario">
-      <label for="nome">Digite seu nome</label>
-      <input type="search" @input="nome" />
+      <label>Digite seu nome</label>
+      <input v-model="nome" type="text" />
     </div>
     <div class="formulario">
-      <label for="tempo">Digite o tempo gasto em min</label>
-      <input type="search" @input="tempo" />
+      <label>Digite o tempo gasto em min</label>
+      <input v-model="tempo" type="text" />
     </div>
     <div class="formulario">
-      <label for="descricao">Descrição</label>
-      <textarea type="search" @input="descricao"> </textarea>
+      <label>Descrição</label>
+      <textarea v-model="descricao" type="text"> </textarea>
+    </div>
+    <div>
+      <button type="submit">teste</button>
+    </div>
+    <div>
+      <button v-on:click="t">teste2</button>
     </div>
   </form>
 </template>
 <script lang="ts">
+import LogDeHoras from "../class/LogDeHoras";
 export default {
   components: {},
   dado() {
     return {
-      nome: "",
-      tempoGato: "",
-
-      forms: [
-        { imp: "", titulo: "nome" },
-        { imp: "", titulo: "Tempo Logado" },
-      ],
-      titulo: "teste",
-      start: "09:10",
-      end: null,
+      nome: String,
+      tempo: String,
+      descricao: String,
+      titulo: String,
     };
   },
   methods: {
     testettt(t: any) {
       console.log(t);
     },
-    testet2(t: any) {
-      // console.log("teste2", t);
+    t() {
+      const l = new LogDeHoras(
+        this.titulo,
+        this.nome,
+        this.tempo,
+        this.descricao
+      );
+      this.$emit("t", l);
+
+      return;
+    },
+
+    grava(event: any) {
+      // this.formularios = this.titulo;
     },
   },
 };
 </script>
 <style scoped>
 .formulario {
-  text-align: center;
+  text-align: start;
   font-size: 1.2em;
-  margin-bottom: 20px;
+  display: block;
+}
+.formulario input,
+.formulario textarea {
+  width: 100%;
 }
 </style>

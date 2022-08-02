@@ -23,13 +23,12 @@ export default {
 <style scoped>
 .painel {
   padding: 0 auto;
-  border: solid 2px grey;
+
   display: inline-block;
   margin: 5px;
   box-shadow: 5px 5px 10px grey;
   width: 350px;
   height: 100%;
-  vertical-align: top;
   text-align: center;
 }
 
@@ -43,6 +42,6 @@ export default {
 }
 
 * {
-  box-shadow: 3px 2px 1px;
+  box-shadow: 2px 2px 2px;
 }
 </style>

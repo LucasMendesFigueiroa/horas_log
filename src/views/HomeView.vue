@@ -1,13 +1,17 @@
 <template>
   <v-row align="center" justify="center">
     <v-col cols="12">
-      <painel :titulo="t">
+      <painel titulo="Log de horas">
         <div><formlog formularios="fsda" @t="tes"></formlog></div>
       </painel>
     </v-col>
 
     <v-col cols="12">
-      <cardinf> </cardinf>
+      <div v-for="loga in horaslogadas" :key="loga">
+        <painel :titulo="loga[0]">
+          <div><cardinf> </cardinf></div>
+        </painel>
+      </div>
     </v-col>
   </v-row>
 </template>
@@ -33,7 +37,7 @@ export default Vue.extend({
   data() {
     return {
       //logHora: LogDeHoras,
-
+      horaslogadas: [],
       t: "teste",
     };
   },
@@ -42,7 +46,8 @@ export default Vue.extend({
     showevent(event: any) {
       console.log(event);
     },
-    tes(form: any) {
+    tes(form: string[]) {
+      this.horaslogadas.push(form);
       this.t = form[0];
       console.log(this.t);
     },

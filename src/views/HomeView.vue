@@ -18,7 +18,7 @@ import Vue from "vue";
 import FormLogHoras from "../components/FormLogHoras.vue";
 import Painel from "@/components/Painel.vue";
 import CardInformacaoVue from "@/components/CardInformacao.vue";
-import LogDeHoras from "@/class/LogDeHoras";
+
 export default Vue.extend({
   name: "Home",
 
@@ -42,8 +42,8 @@ export default Vue.extend({
     showevent(event: any) {
       console.log(event);
     },
-    tes(form: LogDeHoras) {
-      this.t = form.titulo;
+    tes(form: any) {
+      this.t = form[0];
       console.log(this.t);
     },
   },

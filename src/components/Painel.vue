@@ -1,6 +1,6 @@
 <template>
   <div class="painel">
-    <h2 class="painel-titulo" @dblclick="visivel = !visivel">{{ titulo }}</h2>
+    <h2 class="painel-titulo" @click="visivel = !visivel">{{ titulo }}</h2>
 
     <div class="painel-conteudo" v-show="visivel">
       <slot></slot>
@@ -27,7 +27,7 @@ export default {
   display: inline-block;
   margin: 5px;
   box-shadow: 5px 5px 10px grey;
-  width: 350px;
+  width: 50%;
   height: 100%;
   text-align: center;
 }

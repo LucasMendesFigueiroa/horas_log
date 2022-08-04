@@ -2,14 +2,14 @@
   <v-row align="center" justify="center">
     <v-col cols="12">
       <painel titulo="Log de horas">
-        <div><formlog formularios="fsda" @t="tes"></formlog></div>
+        <div><formlog @t="tes"></formlog></div>
       </painel>
     </v-col>
 
     <v-col cols="12">
       <div v-for="loga in horaslogadas" :key="loga">
-        <painel :titulo="loga[0]">
-          <div><cardinf> </cardinf></div>
+        <painel :titulo="loga[0]" visibilidade="true">
+          <div><cardinf :formulario="loga"> </cardinf></div>
         </painel>
       </div>
     </v-col>

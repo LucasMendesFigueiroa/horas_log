@@ -1,6 +1,9 @@
 <template>
   <div class="painel">
-    <h2 class="painel-titulo" @click="visivel = !visivel">{{ titulo }}</h2>
+    <h2 v-if="visibilidade" class="painel-titulo" @click="visivel = !visivel">
+      {{ titulo }} true
+    </h2>
+    <h2 v-else class="painel-titulo">{{ titulo }} false</h2>
 
     <div class="painel-conteudo" v-show="visivel">
       <slot></slot>
@@ -10,7 +13,7 @@
 
 <script lang="ts">
 export default {
-  props: ["titulo"],
+  props: ["titulo", "visibilidade"],
 
   data() {
     return {

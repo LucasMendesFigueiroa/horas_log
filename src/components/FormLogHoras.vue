@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <form @submit.prevent="">
+    <form @submit.prevent="grava()">
       <div class="formulario">
         <label>Digite o titulo da sua Task</label>
         <input v-model="titulo" type="text" />
@@ -18,10 +18,7 @@
         <textarea v-model="descricao" type="text"> </textarea>
       </div>
       <div>
-        <button type="submit">teste</button>
-      </div>
-      <div>
-        <button v-on:click="t">teste2</button>
+        <button type="submit">Salvar</button>
       </div>
     </form>
   </div>
@@ -38,18 +35,11 @@ export default {
     };
   },
   methods: {
-    testettt(t: any) {
-      console.log(t);
-    },
-    t() {
+    grava(event: any) {
       const l = [this.titulo, this.nome, this.tempo, this.descricao];
       this.$emit("t", l);
 
       return;
-    },
-
-    grava(event: any) {
-      // this.formularios = this.titulo;
     },
   },
 };

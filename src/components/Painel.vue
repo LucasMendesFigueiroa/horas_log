@@ -26,7 +26,6 @@ export default {
 <style scoped>
 .painel {
   padding: 0 auto;
-
   display: inline-block;
   margin: 5px;
   box-shadow: 5px 5px 10px rgb(1, 52, 113);
@@ -37,7 +36,7 @@ export default {
 
 .painel .painel-titulo {
   text-align: center;
-  border: solid 2px;
+  border: solid 1px;
   background: rgba(193, 216, 234, 0.995);
   margin: 0 0 15px 0;
   padding: 10px;
@@ -45,6 +44,6 @@ export default {
 }
 
 * {
-  box-shadow: 2px 2px 2px;
+  box-shadow: 1px 1px 1px;
 }
 </style>

@@ -53,7 +53,7 @@ export default Vue.extend({
       this.horaslogadas.push(form);
     },
     apaga(ap: number) {
-      this.horaslogadas.splice(ap);
+      this.horaslogadas.splice(ap, 1);
     },
   },
 });

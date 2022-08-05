@@ -25,6 +25,8 @@ export default Vue.extend({
 
   data() {
     return {
+      teste2: [{ t1: 1 }, { t2: 2 }, { t3: 3 }],
+      teste: false,
       today: "2019-01-08",
       events: [
         {
@@ -51,6 +53,12 @@ export default Vue.extend({
   },
   methods: {
     showevent(event: any) {
+      if (this.teste) {
+        this.teste = false;
+      } else {
+        this.teste = true;
+      }
+
       console.log(event);
     },
   },

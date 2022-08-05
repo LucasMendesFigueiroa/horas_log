@@ -11,8 +11,8 @@
 
       <li class="painelhome">
         <painel titulo="Horas Logadas">
-          <div v-for="loga in horaslogadas" :key="loga">
-            <cardinf :formulario="loga" />
+          <div v-for="(loga, i) in horaslogadas" :key="loga">
+            <cardinf :formulario="loga" :index="i" @apagar="apaga" />
           </div>
         </painel>
       </li>
@@ -51,6 +51,9 @@ export default Vue.extend({
     },
     formulario(form: string[]) {
       this.horaslogadas.push(form);
+    },
+    apaga(ap: number) {
+      this.horaslogadas.splice(ap);
     },
   },
 });

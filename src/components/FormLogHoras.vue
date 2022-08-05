@@ -11,14 +11,14 @@
       </div>
       <div class="formulario">
         <label>Digite o tempo gasto em min</label>
-        <input v-model="tempo" type="text" />
+        <input v-model="tempo" type="number" />
       </div>
       <div class="formulario">
         <label>Descrição</label>
         <textarea v-model="descricao" type="text"> </textarea>
       </div>
       <div>
-        <button type="submit">Salvar</button>
+        <button class="botao" type="submit">Salvar</button>
       </div>
     </form>
   </div>
@@ -29,13 +29,13 @@ export default {
   dado() {
     return {
       nome: String,
-      tempo: String,
+      tempo: Number,
       descricao: String,
       titulo: String,
     };
   },
   methods: {
-    grava(event: any) {
+    grava() {
       const l = [this.titulo, this.nome, this.tempo, this.descricao];
       this.$emit("forme", l);
 
@@ -66,5 +66,14 @@ export default {
   height: 100%;
   vertical-align: top;
   text-align: center;
+}
+.botao {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 3px;
+  margin: 10px;
+  font-size: 1.2em;
+  background: darkcyan;
+  color: white;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <v-row align="center" justify="center">
+  <v-row alig="center" justify="center">
     <v-col cols="12">
       <v-hover v-slot="{ hover }" disabled>
         <v-card

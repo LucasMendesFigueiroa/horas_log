@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="center">
     <ul class="listahome">
       <li>
         <div class="painelhome">
@@ -8,12 +8,11 @@
           </painel>
         </div>
       </li>
+
       <li class="painelhome">
         <painel titulo="Horas Logadas">
           <div v-for="loga in horaslogadas" :key="loga">
-            <painel :titulo="loga[0]" visibilidade="true">
-              <cardinf :formulario="loga" />
-            </painel>
+            <cardinf :formulario="loga" />
           </div>
         </painel>
       </li>
@@ -61,6 +60,11 @@ export default Vue.extend({
   list-style: none;
 }
 .painelhome {
-  width: 50%;
+  width: 100%;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

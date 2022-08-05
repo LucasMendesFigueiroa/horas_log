@@ -37,7 +37,7 @@ export default {
   methods: {
     grava(event: any) {
       const l = [this.titulo, this.nome, this.tempo, this.descricao];
-      this.$emit("t", l);
+      this.$emit("forme", l);
 
       return;
     },

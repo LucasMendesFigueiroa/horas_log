@@ -1,9 +1,9 @@
 <template>
   <div class="painel">
     <h2 v-if="visibilidade" class="painel-titulo" @click="visivel = !visivel">
-      {{ titulo }} true
+      {{ titulo }}
     </h2>
-    <h2 v-else class="painel-titulo">{{ titulo }} false</h2>
+    <h2 v-else class="painel-titulo">{{ titulo }}</h2>
 
     <div class="painel-conteudo" v-show="visivel">
       <slot></slot>
@@ -29,8 +29,8 @@ export default {
 
   display: inline-block;
   margin: 5px;
-  box-shadow: 5px 5px 10px grey;
-  width: 50%;
+  box-shadow: 5px 5px 10px rgb(1, 52, 113);
+  width: 100%;
   height: 100%;
   text-align: center;
 }
@@ -38,7 +38,7 @@ export default {
 .painel .painel-titulo {
   text-align: center;
   border: solid 2px;
-  background: rgba(201, 222, 217, 0.995);
+  background: rgba(193, 216, 234, 0.995);
   margin: 0 0 15px 0;
   padding: 10px;
   text-transform: uppercase;

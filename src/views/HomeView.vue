@@ -1,19 +1,24 @@
 <template>
-  <v-row align="center" justify="center">
-    <v-col cols="12">
-      <painel titulo="Log de horas">
-        <div><formlog @t="tes"></formlog></div>
-      </painel>
-    </v-col>
-
-    <v-col cols="12">
-      <div v-for="loga in horaslogadas" :key="loga">
-        <painel :titulo="loga[0]" visibilidade="true">
-          <div><cardinf :formulario="loga"> </cardinf></div>
+  <div>
+    <ul class="listahome">
+      <li>
+        <div class="painelhome">
+          <painel titulo="Log de horas">
+            <formlog @forme="formulario" />
+          </painel>
+        </div>
+      </li>
+      <li class="painelhome">
+        <painel titulo="Horas Logadas">
+          <div v-for="loga in horaslogadas" :key="loga">
+            <painel :titulo="loga[0]" visibilidade="true">
+              <cardinf :formulario="loga" />
+            </painel>
+          </div>
         </painel>
-      </div>
-    </v-col>
-  </v-row>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts">
@@ -38,7 +43,6 @@ export default Vue.extend({
     return {
       //logHora: LogDeHoras,
       horaslogadas: [],
-      t: "teste",
     };
   },
 
@@ -46,11 +50,17 @@ export default Vue.extend({
     showevent(event: any) {
       console.log(event);
     },
-    tes(form: string[]) {
+    formulario(form: string[]) {
       this.horaslogadas.push(form);
-      this.t = form[0];
-      console.log(this.t);
     },
   },
 });
 </script>
+<style scoped>
+.listahome {
+  list-style: none;
+}
+.painelhome {
+  width: 50%;
+}
+</style>

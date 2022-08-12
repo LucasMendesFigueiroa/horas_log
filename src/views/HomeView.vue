@@ -71,14 +71,7 @@ export default Vue.extend({
       this.horaslogadas.splice(ap, 1);
     },
     editar(ad: []) {
-      console.log(ad[1]);
-      console.log(ad[2]);
-      let aux = ["", "", "", ""];
-      for (let i = 0; i < 4; i++) {
-        aux[i] = Boolean(ad[1][i]) === true ? ad[1][i] : ad[2][i];
-      }
-      console.log(aux);
-      this.horaslogadas.splice(ad[0], 1, aux);
+      this.horaslogadas.splice(ad[0], 1, ad[1]);
     },
     edita(visi: boolean) {
       console.log(visi);

@@ -48,17 +48,19 @@ export default {
   },
   methods: {
     grava() {
+      this.titulo =
+        Boolean(this.titulo) === true ? this.titulo : this.formulario[0];
+      this.nome = Boolean(this.nome) === true ? this.nome : this.formulario[1];
+      this.tempo =
+        Boolean(this.tempo) === true ? this.tempo : this.formulario[2];
+      this.descricao =
+        Boolean(this.descricao) === true ? this.descricao : this.formulario[3];
+
       const l = [
         this.index,
         [this.titulo, this.nome, this.tempo, this.descricao],
         this.formulario,
       ];
-
-      this.titulo = Boolean(l[1][0]) === true ? l[1][0] : l[2][0];
-      this.nome = Boolean(l[1][1]) === true ? l[1][1] : l[2][1];
-      this.tempo = Boolean(l[1][2]) === true ? l[1][2] : l[2][2];
-      this.descricao = Boolean(l[1][3]) === true ? l[1][3] : l[2][3];
-
       if (this.valida()) {
         this.$emit("forme", l);
       }

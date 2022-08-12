@@ -43,6 +43,7 @@ export default {
       nome: String,
       tempo: Number,
       descricao: String,
+      validacao: false,
     };
   },
   methods: {
@@ -53,9 +54,29 @@ export default {
         this.formulario,
       ];
 
-      this.$emit("forme", l);
+      this.titulo = Boolean(l[1][0]) === true ? l[1][0] : l[2][0];
+      this.nome = Boolean(l[1][1]) === true ? l[1][1] : l[2][1];
+      this.tempo = Boolean(l[1][2]) === true ? l[1][2] : l[2][2];
+      this.descricao = Boolean(l[1][3]) === true ? l[1][3] : l[2][3];
 
+      if (this.valida()) {
+        this.$emit("forme", l);
+      }
       return;
+    },
+
+    valida(): boolean {
+      if (
+        Boolean(this.titulo) &&
+        Boolean(this.nome) &&
+        Boolean(this.tempo) &&
+        Boolean(this.descricao)
+      ) {
+        console.log(false);
+        return true;
+      }
+      console.log(true);
+      return false;
     },
   },
 };

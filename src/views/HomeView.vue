@@ -4,7 +4,7 @@
       <li>
         <div class="painelhome">
           <painel titulo="Log de horas">
-            <formlog @forme="formulario" />
+            <formlog @forme="formulario" :formulario="forme" />
           </painel>
         </div>
       </li>
@@ -12,7 +12,20 @@
       <li class="painelhome">
         <painel titulo="Horas Logadas">
           <div v-for="(loga, i) in horaslogadas" :key="loga">
-            <cardinf :formulario="loga" :index="i" @apagar="apaga" />
+            <cardinf
+              :formulario="loga"
+              :index="i"
+              @apagar="apaga"
+              @editar="edita"
+            />
+            <div v-show="visibilidade">
+              <formlog
+                @forme="editar"
+                :formulario="loga"
+                :index="i"
+                v-show="visibilidade"
+              />
+            </div>
           </div>
         </painel>
       </li>
@@ -40,8 +53,10 @@ export default Vue.extend({
 
   data() {
     return {
+      forme: ["", "", "", ""],
       //logHora: LogDeHoras,
       horaslogadas: [],
+      visibilidade: true,
     };
   },
 
@@ -49,11 +64,25 @@ export default Vue.extend({
     showevent(event: any) {
       console.log(event);
     },
-    formulario(form: string[]) {
-      this.horaslogadas.push(form);
+    formulario(form: []) {
+      this.horaslogadas.push(form[1]);
     },
     apaga(ap: number) {
       this.horaslogadas.splice(ap, 1);
+    },
+    editar(ad: []) {
+      console.log(ad[1]);
+      console.log(ad[2]);
+      let aux = ["", "", "", ""];
+      for (let i = 0; i < 4; i++) {
+        aux[i] = Boolean(ad[1][i]) === true ? ad[1][i] : ad[2][i];
+      }
+      console.log(aux);
+      this.horaslogadas.splice(ad[0], 1, aux);
+    },
+    edita(visi: boolean) {
+      console.log(visi);
+      this.visibilidade = visi;
     },
   },
 });

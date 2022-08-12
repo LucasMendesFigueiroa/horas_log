@@ -4,7 +4,8 @@
       <label>{{ titulo[i] }} {{ forme }} </label>
     </div>
 
-    <button class="botao" type="submit" @click="apaga()">Apagar</button>
+    <button class="botao" @click="apaga()">Apagar</button>
+    <button class="botaoed" @click="edit()">Editar</button>
   </div>
 </template>
 
@@ -25,8 +26,12 @@ export default {
   },
   methods: {
     apaga() {
-      console.log(this.index);
       this.$emit("apagar", this.index);
+
+      return;
+    },
+    edita() {
+      this.$emit("editar", this.visvel);
 
       return;
     },
@@ -58,13 +63,21 @@ export default {
   border: solid 0.5px;
   width: 98%;
 }
-.botao {
+.botao,
+.botaoed {
   display: inline-block;
   padding: 5px;
   border-radius: 1px;
   margin: 5px;
   font-size: 1em;
+}
+.botao {
   background: rgb(202, 74, 51);
+  color: white;
+}
+
+.botaoed {
+  background: rgb(215, 145, 39);
   color: white;
 }
 </style>

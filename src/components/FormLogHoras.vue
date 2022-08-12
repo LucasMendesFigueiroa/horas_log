@@ -1,42 +1,58 @@
 <template>
   <div class="card">
     <form @submit.prevent="grava()">
-      <div class="formulario">
-        <label>Digite o titulo da sua Task</label>
-        <input v-model="titulo" type="text" />
-      </div>
-      <div class="formulario">
-        <label>Digite seu nome</label>
-        <input v-model="nome" type="text" />
-      </div>
-      <div class="formulario">
-        <label>Digite o tempo gasto em min</label>
-        <input v-model="tempo" type="number" />
-      </div>
-      <div class="formulario">
-        <label>Descrição</label>
-        <textarea v-model="descricao" type="text"> </textarea>
-      </div>
       <div>
-        <button class="botao" type="submit">Salvar</button>
+        <div>
+          <div class="formulario">
+            <label>Digite o titulo da sua Task</label>
+            <input v-model="titulo" type="text" :placeholder="formulario[0]" />
+          </div>
+          <div class="formulario">
+            <label>Digite seu nome</label>
+            <input v-model="nome" type="text" :placeholder="formulario[1]" />
+          </div>
+          <div class="formulario">
+            <label>Digite o tempo gasto em min</label>
+            <input v-model="tempo" type="number" :placeholder="formulario[2]" />
+          </div>
+          <div class="formulario">
+            <label>Descrição</label>
+            <textarea
+              v-model="descricao"
+              type="text"
+              :placeholder="formulario[3]"
+            >
+            </textarea>
+          </div>
+        </div>
+        <div>
+          <button class="botao" type="submit">Salvar</button>
+        </div>
       </div>
     </form>
   </div>
 </template>
 <script lang="ts">
 export default {
+  props: ["formulario", "index"],
+
   components: {},
   dado() {
     return {
+      titulo: String,
       nome: String,
       tempo: Number,
       descricao: String,
-      titulo: String,
     };
   },
   methods: {
     grava() {
-      const l = [this.titulo, this.nome, this.tempo, this.descricao];
+      const l = [
+        this.index,
+        [this.titulo, this.nome, this.tempo, this.descricao],
+        this.formulario,
+      ];
+
       this.$emit("forme", l);
 
       return;

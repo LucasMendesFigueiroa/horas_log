@@ -3,19 +3,19 @@
     <form @submit.prevent="grava()">
       <div>
         <div>
-          <div class="formulario">
+          <div class="formulario" :class="estilo">
             <label>Digite o titulo da sua Task</label>
             <input v-model="titulo" type="text" :placeholder="formulario[0]" />
           </div>
-          <div class="formulario">
+          <div class="formulario" :class="estilo">
             <label>Digite seu nome</label>
             <input v-model="nome" type="text" :placeholder="formulario[1]" />
           </div>
-          <div class="formulario">
+          <div class="formulario" :class="estilo">
             <label>Digite o tempo gasto em min</label>
             <input v-model="tempo" type="number" :placeholder="formulario[2]" />
           </div>
-          <div class="formulario">
+          <div class="formulario" :class="estilo">
             <label>Descrição</label>
             <textarea
               v-model="descricao"
@@ -25,6 +25,11 @@
             </textarea>
           </div>
         </div>
+
+        <label class="card-perigo" v-show="visivel">
+          Alguns campos não estão preenchidos
+        </label>
+
         <div>
           <button class="botao" type="submit">Salvar</button>
         </div>
@@ -44,8 +49,11 @@ export default {
       tempo: Number,
       descricao: String,
       validacao: false,
+      estilo: "card-perigo",
+      visivel: true,
     };
   },
+
   methods: {
     grava() {
       this.titulo =
@@ -64,7 +72,10 @@ export default {
       if (this.valida()) {
         this.$emit("forme", l);
       }
-      return;
+    },
+    estilos() {
+      if (this.estilo == "padrao" || !this.estilo) return "card-padrao";
+      if (this.estilo == "perigo") return "card-perigo";
     },
 
     valida(): boolean {
@@ -74,16 +85,24 @@ export default {
         Boolean(this.tempo) &&
         Boolean(this.descricao)
       ) {
-        console.log(false);
+        this.visivel = false;
         return true;
       }
-      console.log(true);
+      this.visivel = true;
       return false;
     },
   },
 };
 </script>
 <style scoped>
+.card-padrao {
+  background: rgba(2, 109, 192, 0.995);
+}
+.card-perigo {
+  display: block;
+  color: rgb(255, 0, 0);
+  background: rgba(250, 193, 193, 0.995);
+}
 .formulario {
   text-align: start;
   font-size: 1em;

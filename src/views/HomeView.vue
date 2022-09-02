@@ -56,7 +56,7 @@ export default Vue.extend({
       forme: ["", "", "", ""],
       //logHora: LogDeHoras,
       horaslogadas: [],
-      visibilidade: true,
+      visibilidade: false,
     };
   },
 
@@ -71,6 +71,7 @@ export default Vue.extend({
       this.horaslogadas.splice(ap, 1);
     },
     editar(ad: []) {
+      this.visibilidade = false;
       this.horaslogadas.splice(ad[0], 1, ad[1]);
     },
     edita(visi: boolean) {

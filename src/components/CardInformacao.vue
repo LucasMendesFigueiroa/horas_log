@@ -1,11 +1,11 @@
 <template>
-  <div class="painel">
+  <div class="painel" test-id="card-informacao-label">
     <div class="formulario" v-for="(forme, i) in formulario" :key="forme">
       <label>{{ titulo[i] }} {{ forme }} </label>
     </div>
 
     <button class="botao" @click="apaga()">Apagar</button>
-    <button class="botaoed" @click="edit()">Editar</button>
+    <button class="botaoed" @click="edita()">Editar</button>
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
       return;
     },
     edita() {
-      this.$emit("editar", this.visvel);
+      this.$emit("editar", true);
 
       return;
     },

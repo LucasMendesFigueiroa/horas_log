@@ -5,19 +5,35 @@
         <div>
           <div class="formulario" :class="estilo">
             <label>Digite o titulo da sua Task</label>
-            <input v-model="titulo" type="text" :placeholder="formulario[0]" />
+            <input
+              test-id="forme-titulo"
+              v-model="titulo"
+              type="text"
+              :placeholder="formulario[0]"
+            />
           </div>
           <div class="formulario" :class="estilo">
             <label>Digite seu nome</label>
-            <input v-model="nome" type="text" :placeholder="formulario[1]" />
+            <input
+              test-id="forme-nome"
+              v-model="nome"
+              type="text"
+              :placeholder="formulario[1]"
+            />
           </div>
           <div class="formulario" :class="estilo">
             <label>Digite o tempo gasto em min</label>
-            <input v-model="tempo" type="number" :placeholder="formulario[2]" />
+            <input
+              test-id="forme-tempo"
+              v-model="tempo"
+              type="number"
+              :placeholder="formulario[2]"
+            />
           </div>
           <div class="formulario" :class="estilo">
             <label>Descrição</label>
             <textarea
+              test-id="forme-descricao"
               v-model="descricao"
               type="text"
               :placeholder="formulario[3]"
@@ -26,7 +42,11 @@
           </div>
         </div>
 
-        <label class="card-perigo" v-show="visivel">
+        <label
+          test-id="forme-alerta-campos-nao-preenchidos"
+          class="card-perigo"
+          v-if="visivel"
+        >
           Alguns campos não estão preenchidos
         </label>
 
@@ -39,18 +59,20 @@
 </template>
 <script lang="ts">
 export default {
+  name: "FormLogHoras",
+
   props: ["formulario", "index"],
 
   components: {},
-  dado() {
+  data() {
     return {
-      titulo: String,
-      nome: String,
-      tempo: Number,
-      descricao: String,
+      titulo: "",
+      nome: "",
+      tempo: null,
+      descricao: "",
       validacao: false,
-      estilo: "card-perigo",
-      visivel: true,
+      estilo: "card-padrao",
+      visivel: false,
     };
   },
 
@@ -96,7 +118,7 @@ export default {
 </script>
 <style scoped>
 .card-padrao {
-  background: rgba(2, 109, 192, 0.995);
+  background: rgba(249, 253, 255, 0.995);
 }
 .card-perigo {
   display: block;

@@ -37,11 +37,11 @@ describe("CardInformacao.vue", () => {
   });
   it("Testando o metodo edita ", () => {
     const wrapper = mount(CardInformacao);
-    wrapper.vm.edita();
+    wrapper.vm.editar();
 
     wrapper.trigger("submit");
     const emitido = wrapper.emitted("editar");
     const emi = emitido ? emitido[0][0] : null;
-    expect(emi).toBe(true);
+    expect(emi).toBe(wrapper.vm.formulario);
   });
 });

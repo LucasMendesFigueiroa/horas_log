@@ -6,16 +6,25 @@
 
     <button class="botao" @click="apaga()">Apagar</button>
     <button class="botaoed" @click="edita()">Editar</button>
+
+    <div v-show="visivel">
+      <formlog @forme="editar" :formulario="formulario" :index="index" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
+import FormLogHoras from "../components/FormLogHoras.vue";
+
 export default {
   props: ["formulario", "index"],
+  components: {
+    formlog: FormLogHoras,
+  },
 
   data() {
     return {
-      visivel: true,
+      visivel: false,
       titulo: [
         "Titulo : ",
         "Nome : ",
@@ -31,7 +40,14 @@ export default {
       return;
     },
     edita() {
-      this.$emit("editar", true);
+      this.visivel = true;
+      //this.$emit("editar", true);
+
+      return;
+    },
+    editar(ad: []) {
+      this.visivel = false;
+      this.$emit("editar", ad);
 
       return;
     },

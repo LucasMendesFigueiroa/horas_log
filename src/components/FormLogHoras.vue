@@ -94,6 +94,10 @@ export default {
       if (this.valida()) {
         this.$emit("forme", l);
       }
+      this.titulo = "";
+      this.nome = null;
+      this.tempo = "";
+      this.descricao = "";
     },
     estilos() {
       if (this.estilo == "padrao" || !this.estilo) return "card-padrao";
@@ -110,6 +114,7 @@ export default {
         this.visivel = false;
         return true;
       }
+
       this.visivel = true;
       return false;
     },

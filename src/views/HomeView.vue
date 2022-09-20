@@ -16,16 +16,8 @@
               :formulario="loga"
               :index="i"
               @apagar="apaga"
-              @editar="edita"
+              @editar="editar"
             />
-            <div v-show="visibilidade">
-              <formlog
-                @forme="editar"
-                :formulario="loga"
-                :index="i"
-                v-show="visibilidade"
-              />
-            </div>
           </div>
         </painel>
       </li>
@@ -45,8 +37,6 @@ export default Vue.extend({
 
   components: {
     formlog: FormLogHoras,
-    //horalog: HoraLogadaVue,
-    //calen: calendarioVue,
     painel: Painel,
     cardinf: CardInformacaoVue,
   },
@@ -61,9 +51,6 @@ export default Vue.extend({
   },
 
   methods: {
-    showevent(event: any) {
-      console.log(event);
-    },
     formulario(form: []) {
       this.horaslogadas.push(form[1]);
     },
